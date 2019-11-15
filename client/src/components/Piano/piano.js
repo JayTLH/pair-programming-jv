@@ -6,6 +6,11 @@ import WhiteButton from '../whiteButton/white-button';
 import BlackButton from '../blackButton/black-button'
 import './piano.scss'
 
+// ICONES
+import RecordLogo from  '../../icones/record.png';
+import StopLogo from  '../../icones/stop.png';
+import PlayLogo from  '../../icones/play.png';
+
 // global variables
 let synth = new Tone.Synth().toMaster();
 let recording = null;
@@ -78,15 +83,19 @@ export class Piano extends Component {
   render() {
     return (
       <>
-        <div>
-          <p className="piano-title">Piano</p>
-        </div>
-        <form onSubmit={this.record}>
+        
           <div>
-            <button onClick={this.startRecord}>RECORD</button>
-            <button onClick={this.postRecord}>STOP</button>
-            <button onClick={this.playRecord}>Play</button>
+            <p className="piano-title">The best Piano ever made</p>
           </div>
+          <form onSubmit={this.record}>
+            <div className="studio-section">
+              <button className="record" onClick={this.startRecord}><img className="record-logo"src={RecordLogo} alt="logo"></img></button>
+
+              <button className="stop" onClick={this.postRecord}><img className="stop-logo"src={StopLogo} alt="logo"></img></button>
+
+              <button className="play" onClick={this.playRecord}><img className="play-logo"src={PlayLogo} alt="logo"></img></button>
+            </div>
+        
 
           <section className="piano">
             <div className="black-section">

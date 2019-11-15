@@ -2,13 +2,13 @@
 
 
 .piano-title {
-    margin-left: 200px;
+    margin-left: 110px;
     margin-top: 0px;
+    margin-bottom: 100px;
     padding-top: 40px;
     color: $font-color;
     font-family: monospace;
     font-size: $font-size-xxlarge;
-    
 }
 
 .piano {
@@ -16,13 +16,68 @@
     flex-direction: column;
     align-items: center;
     border: 10px;
+    height: 100vh;
+    background-color: $dark-grey;
 }
 
 .black-section{
     position: absolute;
 }
 
-
-// .white-section {
+.record, .play, .stop {
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
     
-// }
+}
+
+.studio-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // margin-left: 550px;
+    margin-bottom: 50px;
+    // // background-color: $dark-grey2;
+    // // width: 300px;
+    // // height: 90px;
+}
+
+.record-logo, .stop-logo, .play-logo {
+    margin: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.record:hover {
+    background-color: red;
+    border-radius: 50px;
+}
+
+.record:active {
+  background-color: $dark-grey2;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.stop:hover {
+    background-color:black;
+    border-radius: 50px;
+}
+
+.stop:active {
+    background-color: $dark-grey2;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.play:hover {
+    background-color: green;
+    border-radius: 50px;
+}
+
+.play:active {
+    background-color: $dark-grey2;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
