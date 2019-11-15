@@ -6,6 +6,8 @@
     background-color: $header-color;
     padding-left: 100px;
     border-bottom: 1px solid $white-key;
+    text-decoration: none;
+
     
 
     &__button-menu,  &__button-piano {
@@ -13,6 +15,7 @@
         background: transparent;
         border: none;
         outline: none;
+        underline: none;
         font-family: monospace;
         font-size: $font-size-large;
         color: $font-color;
