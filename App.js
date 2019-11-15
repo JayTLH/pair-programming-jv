@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import Tone from 'tone';
 import Axios from 'axios';
 
-import WhiteButton from '../whiteButton/white-button';
-import BlackButton from '../blackButton/black-button'
-import './piano.scss'
+import './App.css';
 
-// global variables
 let synth = new Tone.Synth().toMaster();
 let recording = null;
 
-export class Piano extends Component {
+export default class App extends Component {
   state = {
     oldRecording: null
   }
@@ -64,7 +61,7 @@ export class Piano extends Component {
       let start = this.state.oldRecording.recording[0].timestamp
 
       this.state.oldRecording.recording.forEach(index => {
-        if (index.note) {
+        if (index.note){
           synth.triggerAttackRelease(index.note, '8n', ((index.timestamp - start) / 1000))
         }
       })
@@ -77,23 +74,26 @@ export class Piano extends Component {
 
   render() {
     return (
-      <>
+      <form className="App" onSubmit={this.record}>
+        <button onClick={this.startRecord}>RECORD</button><br />
+        <button onClick={this.postRecord}>STOP</button><br />
+        <button onClick={this.playRecord}>Play</button>
         <div>
-          <p className="piano-title">Piano</p>
+          <button value="C4" onClick={this.clickHandle}>C</button>
+          <button value="C#4" onClick={this.clickHandle}>C#</button>
+          <button value="D4" onClick={this.clickHandle}>D</button>
+          <button value="D#4" onClick={this.clickHandle}>D#</button>
+          <button value="E4" onClick={this.clickHandle}>E</button>
+          <button value="F4" onClick={this.clickHandle}>F</button>
+          <button value="F#4" onClick={this.clickHandle}>F#</button>
+          <button value="G4" onClick={this.clickHandle}>G</button>
+          <button value="G#4" onClick={this.clickHandle}>G#</button>
+          <button value="A4" onClick={this.clickHandle}>A</button>
+          <button value="A#4" onClick={this.clickHandle}>A#</button>
+          <button value="B4" onClick={this.clickHandle}>B</button>
         </div>
-
-
-        <section className="piano">
-          <div className="black-section">
-            <BlackButton />
-          </div>
-
-          <div className="white-section">
-            <WhiteButton />
-          </div>
-        </section>
-      </>
+      </form>
     )
   }
 }
-export default Piano;
+
