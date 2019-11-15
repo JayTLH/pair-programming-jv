@@ -58,13 +58,12 @@ export default class App extends Component {
 
   playRecord = () => {
     if (this.state.oldRecording) {
-      let noteList = this.state.oldRecording.recording
       let start = this.state.oldRecording.recording[0].timestamp
 
-      // synth.triggerAttackRelease(noteList[0].note, '8n', ((noteList[0].timestamp - start) / 1000))
-
       this.state.oldRecording.recording.forEach(index => {
-        synth.triggerAttackRelease(index.note, '8n', ((index.timestamp - start) / 1000))
+        if (index.note){
+          synth.triggerAttackRelease(index.note, '8n', ((index.timestamp - start) / 1000))
+        }
       })
     }
   }
