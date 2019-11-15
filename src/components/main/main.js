@@ -8,14 +8,13 @@ export class Main extends Component {
     render() {
         return(
             
-<>
-        
+            <>
                 <Header />
             
                 <div className="piano-section">
                      <Piano />
                 </div>
-</>
+            </>
         )
     }
 }

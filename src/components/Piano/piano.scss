@@ -8,12 +8,14 @@
     color: $font-color;
     font-family: monospace;
     font-size: $font-size-xxlarge;
+    
 }
 
 .piano {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 10px;
 }
 
 .black-section{

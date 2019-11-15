@@ -8,7 +8,7 @@ export class Piano extends Component {
         return(
             <>
                 <div>
-                    <p className="piano-title">PIANO</p>
+                    <p className="piano-title">Piano</p>
                 </div>
 
 
