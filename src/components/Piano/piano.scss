@@ -1,0 +1,26 @@
+@import '../../styles/styles.scss';
+
+
+.piano-title {
+    margin-left: 200px;
+    margin-top: 0px;
+    padding-top: 40px;
+    color: $font-color;
+    font-family: monospace;
+    font-size: $font-size-xxlarge;
+}
+
+.piano {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.black-section{
+    position: absolute;
+}
+
+
+// .white-section {
+    
+// }

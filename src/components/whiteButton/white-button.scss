@@ -1,0 +1,13 @@
+@import '../../styles/styles.scss';
+
+.white-buttons {
+    display: flex;
+    align-content: center;
+
+
+    &__key {
+        background-color: $white-key;
+        width: 60px;
+        height: 240px;
+    }
+}
