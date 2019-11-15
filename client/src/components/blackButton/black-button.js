@@ -25,7 +25,7 @@ export class BlackButton extends Component {
             <div className="black-buttons__second-group">   
                 <button className="black-buttons__key-three" value="F#5" onClick={this.props.clickButton}></button>         
                 <button className="black-buttons__key-three" value="G#5" onClick={this.props.clickButton}></button>          
-                <button className="black-buttons__key-three" value="A#5" onClick={this.props.clickButton}></button>
+                <button className="black-buttons__key-three" value="A#5 " onClick={this.props.clickButton}></button>
             </div>
         </div>
         )

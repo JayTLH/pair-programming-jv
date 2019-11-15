@@ -39,6 +39,87 @@ export class Piano extends Component {
     }
   }
 
+  keyHandle = (e) => {
+    if (e.key === 'a') {
+      synth.triggerAttackRelease('C4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'C4'})
+      }
+    }
+    if (e.key === 'w') {
+      synth.triggerAttackRelease('C#4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'C#4'})
+      }
+    }
+    if (e.key === 's') {
+      synth.triggerAttackRelease('D4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'D4'})
+      }
+    }
+    if (e.key === 'e') {
+      synth.triggerAttackRelease('D#4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'D#4'})
+      }
+    }
+    if (e.key === 'd') {
+      synth.triggerAttackRelease('E4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'E4'})
+      }
+    }
+    if (e.key === 'f') {
+      synth.triggerAttackRelease('F4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'F4'})
+      }
+    }
+    if (e.key === 't') {
+      synth.triggerAttackRelease('F#4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'F#4'})
+      }
+    }
+    if (e.key === 'g') {
+      synth.triggerAttackRelease('G4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'G4'})
+      }
+    }
+    if (e.key === 'y') {
+      synth.triggerAttackRelease('G#4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'G#4'})
+      }
+    }
+    if (e.key === 'h') {
+      synth.triggerAttackRelease('A4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'A4'})
+      }
+    }
+    if (e.key === 'u') {
+      synth.triggerAttackRelease('A#4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'A#4'})
+      }
+    }
+    if (e.key === 'j') {
+      synth.triggerAttackRelease('B4', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'B4'})
+      }
+    }
+    if (e.key === 'k') {
+      synth.triggerAttackRelease('C5', '8n')
+      if (recording) {
+        recording.push({ timestamp: Date.now(), note: 'C5'})
+      }
+    }
+  }
+
   startRecord = () => {
     if (!recording) {
       recording = []
@@ -81,11 +162,11 @@ export class Piano extends Component {
         <div>
           <p className="piano-title">Piano</p>
         </div>
-        <form onSubmit={this.record}>
+        <form onSubmit={this.record} onKeyPress={this.keyHandle}>
           <div>
             <button onClick={this.startRecord}>RECORD</button>
             <button onClick={this.postRecord}>STOP</button>
-            <button onClick={this.playRecord}>Play</button>
+            <button onClick={this.playRecord}>PLAY</button>
           </div>
 
           <section className="piano">
