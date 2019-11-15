@@ -7,9 +7,9 @@ import BlackButton from '../blackButton/black-button'
 import './piano.scss'
 
 // ICONES
-import RecordLogo from  '../../icones/record.png';
-import StopLogo from  '../../icones/stop.png';
-import PlayLogo from  '../../icones/play.png';
+import RecordLogo from '../../icones/record.png';
+import StopLogo from '../../icones/stop.png';
+import PlayLogo from '../../icones/play.png';
 
 // global variables
 let synth = new Tone.Synth().toMaster();
@@ -48,79 +48,79 @@ export class Piano extends Component {
     if (e.key === 'a') {
       synth.triggerAttackRelease('C4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'C4'})
+        recording.push({ timestamp: Date.now(), note: 'C4' })
       }
     }
     if (e.key === 'w') {
       synth.triggerAttackRelease('C#4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'C#4'})
+        recording.push({ timestamp: Date.now(), note: 'C#4' })
       }
     }
     if (e.key === 's') {
       synth.triggerAttackRelease('D4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'D4'})
+        recording.push({ timestamp: Date.now(), note: 'D4' })
       }
     }
     if (e.key === 'e') {
       synth.triggerAttackRelease('D#4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'D#4'})
+        recording.push({ timestamp: Date.now(), note: 'D#4' })
       }
     }
     if (e.key === 'd') {
       synth.triggerAttackRelease('E4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'E4'})
+        recording.push({ timestamp: Date.now(), note: 'E4' })
       }
     }
     if (e.key === 'f') {
       synth.triggerAttackRelease('F4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'F4'})
+        recording.push({ timestamp: Date.now(), note: 'F4' })
       }
     }
     if (e.key === 't') {
       synth.triggerAttackRelease('F#4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'F#4'})
+        recording.push({ timestamp: Date.now(), note: 'F#4' })
       }
     }
     if (e.key === 'g') {
       synth.triggerAttackRelease('G4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'G4'})
+        recording.push({ timestamp: Date.now(), note: 'G4' })
       }
     }
     if (e.key === 'y') {
       synth.triggerAttackRelease('G#4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'G#4'})
+        recording.push({ timestamp: Date.now(), note: 'G#4' })
       }
     }
     if (e.key === 'h') {
       synth.triggerAttackRelease('A4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'A4'})
+        recording.push({ timestamp: Date.now(), note: 'A4' })
       }
     }
     if (e.key === 'u') {
       synth.triggerAttackRelease('A#4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'A#4'})
+        recording.push({ timestamp: Date.now(), note: 'A#4' })
       }
     }
     if (e.key === 'j') {
       synth.triggerAttackRelease('B4', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'B4'})
+        recording.push({ timestamp: Date.now(), note: 'B4' })
       }
     }
     if (e.key === 'k') {
       synth.triggerAttackRelease('C5', '8n')
       if (recording) {
-        recording.push({ timestamp: Date.now(), note: 'C5'})
+        recording.push({ timestamp: Date.now(), note: 'C5' })
       }
     }
   }
@@ -164,19 +164,17 @@ export class Piano extends Component {
   render() {
     return (
       <>
-          <div>
-            <p className="piano-title">The best Piano ever made</p>
+        <div>
+          <p className="piano-title">The best Piano ever made</p>
+        </div>
+        <form onSubmit={this.record} onKeyPress={this.keyHandle}>
+          <div className="studio-section">
+            <button className="record" onClick={this.startRecord}><img className="record-logo" src={RecordLogo} alt="logo"></img></button>
+
+            <button className="stop" onClick={this.postRecord}><img className="stop-logo" src={StopLogo} alt="logo"></img></button>
+
+            <button className="play" onClick={this.playRecord}><img className="play-logo" src={PlayLogo} alt="logo"></img></button>
           </div>
-          <form onSubmit={this.record}>
-            <div className="studio-section">
-              <button className="record" onClick={this.startRecord}><img className="record-logo"src={RecordLogo} alt="logo"></img></button>
-
-              <button className="stop" onClick={this.postRecord}><img className="stop-logo"src={StopLogo} alt="logo"></img></button>
-
-              <button className="play" onClick={this.playRecord}><img className="play-logo"src={PlayLogo} alt="logo"></img></button>
-            </div>
-        
-
           <section className="piano">
             <div className="black-section">
               <BlackButton clickButton={this.clickHandle} />
