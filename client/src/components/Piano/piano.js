@@ -82,14 +82,19 @@ export class Piano extends Component {
           <p className="piano-title">Piano</p>
         </div>
 
+        <div>
+          <button>RECORD</button>
+          <button>STOP</button>
+          <button>PLAY</button>
+        </div>
 
         <section className="piano">
           <div className="black-section">
-            <BlackButton />
+            <BlackButton clickButton={this.clickHandle} />
           </div>
 
           <div className="white-section">
-            <WhiteButton />
+            <WhiteButton clickButton={this.clickHandle} />
           </div>
         </section>
       </>
