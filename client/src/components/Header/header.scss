@@ -2,6 +2,8 @@
 
 
 .header {
+    display: flex;
+    flex-direction: row;
     height: 80px;
     background-color: $header-color;
     padding-left: 100px;
@@ -14,11 +16,15 @@
         border: none;
         outline: none;
         font-family: monospace;
-        font-size: $font-size-large;
+        font-size: $font-size-xlarge;
         color: $font-color;
-        padding-top: 30px;
+        padding-top: 20px;
         margin-right: 100px;
     }
+}
+
+.link {
+    text-decoration: none;
 }
 
 

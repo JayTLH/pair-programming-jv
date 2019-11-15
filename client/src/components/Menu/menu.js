@@ -7,7 +7,7 @@ export class Piano extends Component {
         return(
 
             <div>
-                <Header />
+                
             </div>
             
         )

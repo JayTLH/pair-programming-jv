@@ -7,8 +7,8 @@ export class Header extends Component {
         return(
 
             <header className="header">
-                <Link to="/"><div className="header__button-piano">Piano</div></Link>
-                {/* <Link to="/piano"><div className="header__button-piano">Piano</div></Link> */}
+                {/* <Link to="/piano"><div className="header__button-piano">Menu</div></Link> */}
+                <Link className="link" to="/"><div className="header__button-piano">Piano!</div></Link>
             </header>
 
         )

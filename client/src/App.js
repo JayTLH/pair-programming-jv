@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // components
 import Main from './components/main/main';
-import Piano from './components/Piano/piano';
+// import Piano from './components/Piano/piano';
+
 
 export default class App extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Main} />
-            <Route path="/piano" component={Piano} />
+            {/* <Route path="/piano" component={Menu} /> */}
           </Switch>
         </BrowserRouter>
       </div>

@@ -36,11 +36,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // margin-left: 550px;
     margin-bottom: 50px;
-    // // background-color: $dark-grey2;
-    // // width: 300px;
-    // // height: 90px;
 }
 
 .record-logo, .stop-logo, .play-logo {
@@ -55,18 +51,18 @@
 }
 
 .record:active {
-  background-color: $dark-grey2;
+  background-color: darkred;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
 .stop:hover {
-    background-color:black;
+    background-color: orange;
     border-radius: 50px;
 }
 
 .stop:active {
-    background-color: $dark-grey2;
+    background-color: darkorange;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
@@ -77,7 +73,7 @@
 }
 
 .play:active {
-    background-color: $dark-grey2;
+    background-color: darkgreen;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }

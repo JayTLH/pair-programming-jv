@@ -165,7 +165,7 @@ export class Piano extends Component {
     return (
       <>
         <div>
-          <p className="piano-title">The best Piano ever made</p>
+          <p className="piano-title">The best Piano ever made...</p>
         </div>
         <form onSubmit={this.record} onKeyPress={this.keyHandle}>
           <div className="studio-section">
