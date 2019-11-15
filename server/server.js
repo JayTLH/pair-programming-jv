@@ -1,21 +1,18 @@
+// import packages
 const express = require('express')
 const app = express()
-const fs = require('fs')
+const cors = require('cors')
 
-app.get('/', (req, res) => {
+// import routes
+const piano = require('./routes/piano')
 
-  res.send("hello")
-})
+// middleware
+app.use(express.static('public'))
+app.use(express.json())
+app.use(cors())
 
-app.post('/', (req, res) => {
-  // let postBody = req.body
-  let postBody = {name: "Jason"}
-  fs.writeFile('./data/song.json', JSON.stringify(postBody), (err) => {
-    if (err) throw err
-  })
-
-  res.send("posted")
-})
+// routes
+app.use('/piano', piano)
 
 app.listen(8080, (req, res) => {
   console.log("server on port 8080")

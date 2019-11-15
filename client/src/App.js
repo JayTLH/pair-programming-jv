@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Tone from 'tone';
+import Axios from 'axios';
 
 import './App.css';
 
@@ -7,6 +8,22 @@ let synth = new Tone.Synth().toMaster();
 let recording = null;
 
 export default class App extends Component {
+  state = {
+    oldRecording: null
+  }
+
+  getRecording = () => {
+    Axios.get('http://localhost:8080/piano')
+      .then(res => {
+        this.setState({
+          oldRecording: res.data
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
   record = (e) => {
     e.preventDefault()
   }
@@ -15,39 +32,53 @@ export default class App extends Component {
     let tone = e.target.value
     synth.triggerAttackRelease(tone, '8n')
     if (recording) {
-      recording.push({timestamp: Date.now(), note: synth.triggerAttackRelease(tone, '8n')})
+      recording.push({ timestamp: Date.now(), note: tone })
     }
-    console.log(recording)
   }
 
   startRecord = () => {
     if (!recording) {
       recording = []
-      recording.push({timestamp: Date.now()})
+      recording.push({ timestamp: Date.now() })
     }
   }
 
+  postRecord = () => {
+    if (recording) {
+      Axios.post('http://localhost:8080/piano', { recording })
+        .then(res => {
+          recording = null
+          this.getRecording()
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+  }
 
-  
+  playRecord = () => {
+    if (this.state.oldRecording) {
+      let noteList = this.state.oldRecording.recording
+      let start = this.state.oldRecording.recording[0].timestamp
+
+      // synth.triggerAttackRelease(noteList[0].note, '8n', ((noteList[0].timestamp - start) / 1000))
+
+      this.state.oldRecording.recording.forEach(index => {
+        synth.triggerAttackRelease(index.note, '8n', ((index.timestamp - start) / 1000))
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.getRecording()
+  }
+
   render() {
     return (
       <form className="App" onSubmit={this.record}>
-        <button onClick={this.startRecord}>RECORD</button>
-        <button onClick={this.postRecord}>STOP</button>
-        <div>
-          <button value="C3" onClick={this.clickHandle}>C</button>
-          <button value="C#3" onClick={this.clickHandle}>C#</button>
-          <button value="D3" onClick={this.clickHandle}>D</button>
-          <button value="D#3" onClick={this.clickHandle}>D#</button>
-          <button value="E3" onClick={this.clickHandle}>E</button>
-          <button value="F3" onClick={this.clickHandle}>F</button>
-          <button value="F#3" onClick={this.clickHandle}>F#</button>
-          <button value="G3" onClick={this.clickHandle}>G</button>
-          <button value="G#3" onClick={this.clickHandle}>G#</button>
-          <button value="A3" onClick={this.clickHandle}>A</button>
-          <button value="A#3" onClick={this.clickHandle}>A#</button>
-          <button value="B3" onClick={this.clickHandle}>B</button>
-        </div>
+        <button onClick={this.startRecord}>RECORD</button><br />
+        <button onClick={this.postRecord}>STOP</button><br />
+        <button onClick={this.playRecord}>Play</button>
         <div>
           <button value="C4" onClick={this.clickHandle}>C</button>
           <button value="C#4" onClick={this.clickHandle}>C#</button>
@@ -61,21 +92,6 @@ export default class App extends Component {
           <button value="A4" onClick={this.clickHandle}>A</button>
           <button value="A#4" onClick={this.clickHandle}>A#</button>
           <button value="B4" onClick={this.clickHandle}>B</button>
-        </div>
-        <div>
-          <button value="C5" onClick={this.clickHandle}>C</button>
-          <button value="C#5" onClick={this.clickHandle}>C#</button>
-          <button value="D5" onClick={this.clickHandle}>D</button>
-          <button value="D#5" onClick={this.clickHandle}>D#</button>
-          <button value="E5" onClick={this.clickHandle}>E</button>
-          <button value="F5" onClick={this.clickHandle}>F</button>
-          <button value="F#5" onClick={this.clickHandle}>F#</button>
-          <button value="G5" onClick={this.clickHandle}>G</button>
-          <button value="G#5" onClick={this.clickHandle}>G#</button>
-          <button value="A5" onClick={this.clickHandle}>A</button>
-          <button value="A#5" onClick={this.clickHandle}>A#</button>
-          <button value="B5" onClick={this.clickHandle}>B</button>
-          <button value="C6" onClick={this.clickHandle}>C</button>
         </div>
       </form>
     )
